@@ -1,0 +1,15 @@
+salamchetori
+salam
+hichi dige
+manam khubam
+radifi
+cheotir?
+sdfs
+sdfs
+slajm
+na khabar
+na khabar
+tarif kon
+chekjhavbaer
+radifisalam
+Warning:  fread(): Length parameter must be greater than 0 in C:\xampp\htdocs\load.php on line 4
