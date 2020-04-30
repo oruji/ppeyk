@@ -6,6 +6,6 @@
 
 //$myHistory = str_replace("<br />", "\r\n", $myHistory);
 
-  fwrite($myWrite, $myText."\r\n".$myHistory);
+  fwrite($myWrite, gethostbyaddr($_SERVER['REMOTE_ADDR']).": ".$myText."\r\n".$myHistory);
   fclose($myWrite);
 ?>
