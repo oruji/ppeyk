@@ -48,6 +48,10 @@ function myLoad() {
     });   
 }
 
+window.setInterval(function(){
+  myLoad();
+}, 1000);
+
 </script>
 
 <input type="text" id="myText" autofocus />
