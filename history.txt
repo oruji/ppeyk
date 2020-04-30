@@ -1,20 +1,5 @@
-Amin: salam
-Amin: salam
-Amin: salam
-durud
-durud
-salamchetori
-salam
-hichi dige
-manam khubam
-radifi
-cheotir?
-sdfs
-sdfs
-slajm
-na khabar
-na khabar
-tarif kon
-chekjhavbaer
-radifisalam
+Amin (1399/2/11 11:45): bezan berim
+Amin (1399/2/11 11:45): dige pas nagu
+Amin (1399/2/11 11:45): bashe
+
 Warning:  fread(): Length parameter must be greater than 0 in C:\xampp\htdocs\load.php on line 4

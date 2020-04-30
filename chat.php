@@ -1,4 +1,6 @@
 <?php
+  include("jalali.php");
+  
   $myText = $_POST['myText'];
   $myHistory = $_POST['myHistory'];
 
@@ -6,6 +8,8 @@
 
 //$myHistory = str_replace("<br />", "\r\n", $myHistory);
 
-  fwrite($myWrite, gethostbyaddr($_SERVER['REMOTE_ADDR']).": ".$myText."\r\n".$myHistory);
+  $myDate = gregorian_to_jalali (date("Y"), date("m"), date("d"), "Y/m/d") . " " . date("H:i");
+
+  fwrite($myWrite, gethostbyaddr($_SERVER['REMOTE_ADDR']). " (" . $myDate . "): ".$myText."\r\n".$myHistory);
   fclose($myWrite);
 ?>

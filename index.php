@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="jquery.js"></script>
 <script>
@@ -16,6 +17,7 @@ $(document).on("click", "#mySend", function() {
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(msg) {
         myLoad();
+        $("#myText").val("");
       }
     });
   }
