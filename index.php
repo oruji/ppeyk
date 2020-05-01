@@ -96,7 +96,7 @@ function myLoad() {
       $matn = msg.split("~^")[1];
       if ($owner !== undefined && $matn !== undefined && $matn.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
         $("#myHistory").html($matn);
-        document.title = $matn.split("</div>")[0];
+        document.title = $matn.split("</div>")[0].split("</span>")[1];
         if (!$matn.startsWith("<div class=\"" + $owner)) {
           playAudio();          
         }
