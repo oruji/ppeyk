@@ -8,10 +8,11 @@
 
   $myDate = gregorian_to_jalali (date("Y"), date("m"), date("d"), "Y/m/d") . " " . date("H:i");
 
-  $myFinal = gethostbyaddr($_SERVER['REMOTE_ADDR']). " (" . $myDate . "): ".$myText."\r\n".$myHistory;
+  $myFinal = "<div><span>" . gethostbyaddr($_SERVER['REMOTE_ADDR']) . " (" . $myDate . "): </span>".$myText."</div>".$myHistory;
 
-  if (strlen($myHistory) < strlen($myFinal))
+  if (strlen($myHistory) < strlen($myFinal)) {
     fwrite($myWrite, $myFinal);
+  }
   
   fclose($myWrite);
 ?>

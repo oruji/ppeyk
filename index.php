@@ -4,13 +4,13 @@
 <script>
 $(document).on("click", "#mySend", function() {
   var myText = $("#myText").val();
-  var myHistory = $("#myHistory").text();
+  var myHistory = $("#myHistory").html();
   if(myText != "" && myText !== null) {
     $.ajax({
       type: 'POST',
       url: 'chat.php', 
       data: { 
-        'myText': toLink(myText),
+        'myText': myText,
         'myHistory': myHistory
       },
       scriptCharset: "utf-8" ,
@@ -24,7 +24,15 @@ $(document).on("click", "#mySend", function() {
 });
 
 $(document).ready(function(){
-  myLoad();
+    $.ajax({
+    type: 'POST',
+    url: 'load.php', 
+    scriptCharset: "utf-8" ,
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: function(msg) {
+      $("#myHistory").html(toLink(msg));
+    }
+  });  
   
   // press enter send message
   var input = document.getElementById("myText");
@@ -37,15 +45,21 @@ $(document).ready(function(){
 });
 
 function myLoad() {
-    $.ajax({
-      type: 'POST',
-      url: 'load.php', 
-      scriptCharset: "utf-8" ,
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: function(msg) {
-        $("#myHistory").html(msg);
+  var myHistory = $("#myHistory").html();
+  $.ajax({
+    type: 'POST',
+    url: 'load.php', 
+    data: { 
+      'myHistory': myHistory
+    },
+    scriptCharset: "utf-8" ,
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: function(msg) {
+      if (msg.trim() !== $("#myHistory").html().trim()) {
+        $("#myHistory").html(toLink(msg));
       }
-    });   
+    }
+  });   
 }
 
 window.setInterval(function(){
@@ -70,4 +84,4 @@ function toLink(text) {
 
 <input type="text" id="myText" autofocus />
 <button id="mySend">Send</button>
-<pre id="myHistory"></pre>
+<div id="myHistory"></div>
