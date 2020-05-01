@@ -34,7 +34,7 @@ $(document).on("click", "#mySend", function() {
       type: 'POST',
       url: 'chat.php', 
       data: { 
-        'myText': myText,
+        'myText': toLink(myText),
         'myHistory': myHistory
       },
       scriptCharset: "utf-8" ,
@@ -80,7 +80,7 @@ function myLoad() {
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(msg) {
       if (msg.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
-        $("#myHistory").html(toLink(msg));
+        $("#myHistory").html(msg);
       }
     }
   });   
@@ -99,7 +99,7 @@ function toLink(text) {
       if (!hyperlink.match('^https?:\/\/')) {
         hyperlink = 'http://' + hyperlink;
       }
-      return space + '<a href="' + hyperlink + '">' + url + '</a>';
+      return space + '<a target="_blank" href="' + hyperlink + '">' + url + '</a>';
     }
   );
 };
