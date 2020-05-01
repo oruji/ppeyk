@@ -11,8 +11,12 @@ div {
   background: #ffe6f0;
 }
 
-#myText {width:70%;    height: 30px;
-    border-radius: 5px;}
+#myText {
+  margin-bottom: 5px;
+  width:70%;
+  height: 30px;
+  border-radius: 5px;
+}
 #mySend {width:18%;max-width:100px;height:30px}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
