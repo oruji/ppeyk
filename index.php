@@ -10,7 +10,7 @@ $(document).on("click", "#mySend", function() {
       type: 'POST',
       url: 'chat.php', 
       data: { 
-        'myText': myText,
+        'myText': toLink(myText),
         'myHistory': myHistory
       },
       scriptCharset: "utf-8" ,
@@ -51,6 +51,20 @@ function myLoad() {
 window.setInterval(function(){
   myLoad();
 }, 1000);
+
+function toLink(text) {
+
+  return (text || "").replace(
+    /([^\S]|^)(((https?\:\/\/)|(www\.))(\S+))/gi,
+    function(match, space, url){
+      var hyperlink = url;
+      if (!hyperlink.match('^https?:\/\/')) {
+        hyperlink = 'http://' + hyperlink;
+      }
+      return space + '<a href="' + hyperlink + '">' + url + '</a>';
+    }
+  );
+};
 
 </script>
 
