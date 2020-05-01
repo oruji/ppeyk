@@ -10,7 +10,7 @@
 
   $myUser = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
-  $myFinal = "<div class='$myUser'><span>" . $myUser . " (" . $myDate . "): </span>".$myText."</div>".$myHistory;
+  $myFinal = "<div class=\"$myUser\"><span>" . $myUser . " (" . $myDate . "): </span>".$myText."</div>".$myHistory;
 
   if (strlen($myHistory) < strlen($myFinal)) {
     fwrite($myWrite, $myFinal);

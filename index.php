@@ -1,4 +1,6 @@
 <style>
+*{font-size:15pt}
+
 div {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -76,7 +78,7 @@ function myLoad() {
     scriptCharset: "utf-8" ,
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(msg) {
-      if (msg.trim() !== $("#myHistory").html().trim()) {
+      if (msg.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
         $("#myHistory").html(toLink(msg));
       }
     }
