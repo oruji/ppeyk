@@ -6,11 +6,11 @@
 
   $myWrite = fopen("history.txt", "w") or die("Unable to open Write file!");
 
-  $myDate = gregorian_to_jalali (date("Y"), date("m"), date("d"), "Y/m/d") . " " . date("H:i");
+  $myDate = gregorian_to_jalali (date("Y"), date("m"), date("d"), "Y/m/d");
 
   $myUser = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
-  $myFinal = "<div class=\"$myUser\"><span>" . $myUser . " (" . $myDate . "): </span>".$myText."</div>".$myHistory;
+  $myFinal = "<div class=\"$myUser\" title=\"$myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>".$myHistory;
 
   if (strlen($myHistory) < strlen($myFinal)) {
     fwrite($myWrite, $myFinal);
