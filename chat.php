@@ -8,9 +8,11 @@
 
   $myDate = gregorian_to_jalali (date("Y"), date("m"), date("d"), "Y/m/d");
 
+$dayName = date("D");
+
   $myUser = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
-  $myFinal = "<div class=\"$myUser\" title=\"$myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>".$myHistory;
+  $myFinal = "<div class=\"$myUser\" title=\"$dayName - $myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>".$myHistory;
 
   if (strlen($myHistory) < strlen($myFinal)) {
     fwrite($myWrite, $myFinal);
