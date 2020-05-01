@@ -1,3 +1,5 @@
+<script src="jquery.js"></script>
+
 <style>
 *{font-size:15pt}
 
@@ -24,7 +26,7 @@ div {
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script src="jquery.js"></script>
+
 <script>
 $(document).on("click", "#mySend", function() {
   var myText = $("#myText").val();
@@ -66,6 +68,13 @@ $(document).ready(function(){
     document.getElementById("mySend").click();
   }
 });
+
+$('[id^="emo_"]').each(function() {
+    $(this).click(function(){
+      $("#myText").val($("#myText").val()+$(this).text());
+    });
+});
+
 });
 
 function myLoad() {
@@ -105,7 +114,39 @@ function toLink(text) {
 };
 
 </script>
+<div>
+<span id="emo_">😂</span>
+<span id="emo_">😬</span>
+<span id="emo_">👍</span>
+<span id="emo_">🙏</span>
+<span id="emo_">😢</span>
+<span id="emo_">😑</span>
+<span id="emo_">😮</span>
+<span id="emo_">😋</span>
+<span id="emo_">😙</span>
+<span id="emo_">😴</span>
+<span id="emo_">😲</span>
+<span id="emo_">👏</span>
+<span id="emo_">💋</span>
+<span id="emo_">✔</span>
+<span id="emo_">🤢</span>
+<span id="emo_">😭</span>
+<span id="emo_">✋</span>
+<span id="emo_">👌</span>
+<span id="emo_">👆</span>
+<span id="emo_">👇</span>
+<span id="emo_">👈</span>
+<span id="emo_">👉</span>
+<span id="emo_">💪</span>
+<span id="emo_">👀</span>
+<span id="emo_">🍓</span>
+<span id="emo_">🍑</span>
+<span id="emo_">🍒</span>
+<span id="emo_">🍌</span>
+<span id="emo_">🍉</span>
+<span id="emo_">🍇</span>
 
-<input type="text" id="myText" autofocus />
+</div>
+<input type="text" id="myText" autofocus emoji />
 <button id="mySend">Send</button>
 <div id="myHistory"></div>
