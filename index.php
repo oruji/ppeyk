@@ -1,3 +1,6 @@
+<html>
+<head>
+<title>Lan Messenger</title>
 <script src="jquery.js"></script>
 
 <style>
@@ -50,13 +53,14 @@ $(document).on("click", "#mySend", function() {
 });
 
 $(document).ready(function(){
+ 
     $.ajax({
     type: 'POST',
     url: 'load.php', 
     scriptCharset: "utf-8" ,
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(msg) {
-      $("#myHistory").html(toLink(msg));
+      $("#myHistory").html(toLink(msg.split("~^")[1]));
     }
   });  
   
@@ -88,11 +92,17 @@ function myLoad() {
     scriptCharset: "utf-8" ,
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(msg) {
-      if (msg.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
-        $("#myHistory").html(msg);
+      $owner = msg.split("~^")[0];
+      $matn = msg.split("~^")[1];
+      if ($matn.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
+        $("#myHistory").html($matn);
+        document.title = $matn.split("</div>")[0];
+        if (!$matn.startsWith("<div class\"" + $owner)) {
+          playAudio();          
+        }
       }
     }
-  });   
+  });
 }
 
 window.setInterval(function(){
@@ -114,6 +124,21 @@ function toLink(text) {
 };
 
 </script>
+</head>
+<body>
+
+<audio id="myAudio">
+  <source src="ding.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+</script>
+
 <div>
 <span id="emo_">😂</span>
 <span id="emo_">😬</span>
@@ -150,3 +175,5 @@ function toLink(text) {
 <input type="text" id="myText" autofocus emoji />
 <button id="mySend">Send</button>
 <div id="myHistory"></div>
+</body>
+</html>

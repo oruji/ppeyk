@@ -6,6 +6,7 @@
     
     $html = str_replace("\r", "", $html);
     $html = str_replace("\n", "", $html);
-    echo $html;
+    
+    echo gethostbyaddr($_SERVER['REMOTE_ADDR']) . "~^" . $html;
   }
 ?>
