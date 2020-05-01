@@ -94,10 +94,10 @@ function myLoad() {
     success: function(msg) {
       $owner = msg.split("~^")[0];
       $matn = msg.split("~^")[1];
-      if ($matn.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
+      if ($owner !== undefined && $matn !== undefined && $matn.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
         $("#myHistory").html($matn);
         document.title = $matn.split("</div>")[0];
-        if (!$matn.startsWith("<div class\"" + $owner)) {
+        if (!$matn.startsWith("<div class=\"" + $owner)) {
           playAudio();          
         }
       }
