@@ -1,3 +1,20 @@
+<style>
+div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.Amin {
+  background: #ecfaff;
+}
+
+.Fatemeh {
+  background: #ffe6f0;
+}
+
+#myText {width:70%;    height: 30px;
+    border-radius: 5px;}
+#mySend {width:18%;max-width:100px;height:30px}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="jquery.js"></script>
