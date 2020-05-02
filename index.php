@@ -94,10 +94,10 @@ function myLoad() {
     success: function(msg) {
       $owner = msg.split("~^")[0];
       $matn = msg.split("~^")[1];
-      if ($owner !== undefined && $matn !== undefined && $matn.trim() !== $("#myHistory").html().trim().split("&lt;").join("<").split("&gt;").join(">")) {
+      if ($owner !== undefined && $matn !== undefined) {
         $("#myHistory").html($matn);
         document.title = $matn.split("</div>")[0].split("</span>")[1];
-        if (!$matn.startsWith("<div class=\"" + $owner)) {
+        if (!$matn.startsWith("</div><div class=\"" + $owner)) {
           playAudio();          
         }
       }
@@ -122,8 +122,23 @@ function loadSimple() {
   });
 }
 
+$myChange = "";
+
 window.setInterval(function(){
-  myLoad();
+  
+    $.ajax({
+    type: 'POST',
+    url: 'fileChange.php',
+    async: false,
+    scriptCharset: "utf-8" ,
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: function(msg) {
+      if ($myChange !== msg) {
+        myLoad();
+        $myChange = msg;
+      }      
+    }
+  });
 }, 1000);
 
 function toLink(text) {
