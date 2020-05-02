@@ -208,15 +208,16 @@ function playAudio() {
 <button id="mySend">Send</button>
 <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="submit" value="Send" name="upload">
 </form>
 <div id="myHistory"></div>
 <?php
-if(isset($_POST['submit'])){ //check if form was submitted
+if(isset($_POST['upload'])){ //check if form was submitted
   
 
   $target_dir = "file/";
   $target_name = basename($_FILES["fileToUpload"]["name"]);
+  $target_name = str_replace(" ", "_", $target_name);
   $target_ip = getHostByName(php_uname('n'));
   
   $counter = 1;
