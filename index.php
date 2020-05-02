@@ -96,7 +96,7 @@ function myLoad() {
       $matn = msg.split("~^")[1];
       if ($owner !== undefined && $matn !== undefined) {
         $("#myHistory").html($matn);
-        document.title = $matn.split("</div>")[0].split("</span>")[1];
+        document.title = $matn.split("</div>")[1].split("</span>")[1];
         if (!$matn.startsWith("</div><div class=\"" + $owner)) {
           playAudio();          
         }
@@ -208,7 +208,7 @@ function playAudio() {
 <button id="mySend">Send</button>
 <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Send" name="upload">
+    <input type="submit" value="Send File" name="upload">
 </form>
 <div id="myHistory"></div>
 <?php
