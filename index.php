@@ -45,7 +45,7 @@ $(document).on("click", "#mySend", function() {
       scriptCharset: "utf-8" ,
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(msg) {
-        myLoad();
+        loadSimple();
         $("#myText").val("");
       }
     });
@@ -100,6 +100,23 @@ function myLoad() {
         if (!$matn.startsWith("<div class=\"" + $owner)) {
           playAudio();          
         }
+      }
+    }
+  });
+}
+
+function loadSimple() {
+  $.ajax({
+    type: 'POST',
+    url: 'load.php',
+    async: false,
+    scriptCharset: "utf-8" ,
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: function(msg) {
+      $owner = msg.split("~^")[0];
+      $matn = msg.split("~^")[1];
+      if ($owner !== undefined && $matn !== undefined) {
+        $("#myHistory").html($matn);
       }
     }
   });
@@ -181,7 +198,7 @@ function playAudio() {
 <div id="myHistory"></div>
 <?php
 if(isset($_POST['submit'])){ //check if form was submitted
-  echo "<script>myLoad();</script>";
+  
 
   $target_dir = "file/";
   $target_name = basename($_FILES["fileToUpload"]["name"]);
@@ -210,6 +227,7 @@ if(isset($_POST['submit'])){ //check if form was submitted
       echo "
       <script>
       $(document).ready(function(){
+        loadSimple();
         $(\"#myText\").val(\"$target_url\");
         $(\"#mySend\").click();
   });
