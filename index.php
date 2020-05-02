@@ -170,10 +170,55 @@ function playAudio() {
 <span id="emo_">🍌</span>
 <span id="emo_">🍉</span>
 <span id="emo_">🍇</span>
-
 </div>
+
 <input type="text" id="myText" autofocus emoji />
 <button id="mySend">Send</button>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
 <div id="myHistory"></div>
+<?php
+if(isset($_POST['submit'])){ //check if form was submitted
+  echo "<script>myLoad();</script>";
+
+  $target_dir = "file/";
+  $target_name = basename($_FILES["fileToUpload"]["name"]);
+  $target_ip = "192.168.1.52";
+  
+  $counter = 1;
+  while (file_exists($target_dir.$target_name)) {
+    //$target_name = "new" . $counter . $target_name;
+    $target_name = substr_replace($target_name, $counter, -4, 0);
+    
+    $counter++;
+  }
+  
+  // Check if file already exists
+//  if (file_exists($target_dir.$target_name)) {
+//    $target_name = "new_".$target_name;
+    
+    //echo "Sorry, file already exists.";
+//  }
+
+  $target_url = "http://" . $target_ip . "/" . $target_dir . $target_name;
+
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir.$target_name)) {
+      echo "The file <a target=_blank $target_url \">". $target_name . "</a> has been uploaded.";
+      
+      echo "
+      <script>
+      $(document).ready(function(){
+        $(\"#myText\").val(\"$target_url\");
+        $(\"#mySend\").click();
+  });
+      </script>";
+
+  } else {
+      echo "Sorry, there was an error uploading your file.";
+  }
+}
+?>
 </body>
 </html>
