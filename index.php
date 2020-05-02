@@ -202,7 +202,7 @@ if(isset($_POST['submit'])){ //check if form was submitted
 
   $target_dir = "file/";
   $target_name = basename($_FILES["fileToUpload"]["name"]);
-  $target_ip = "192.168.1.52";
+  $target_ip = getHostByName(php_uname('n'));
   
   $counter = 1;
   while (file_exists($target_dir.$target_name)) {
@@ -211,13 +211,6 @@ if(isset($_POST['submit'])){ //check if form was submitted
     
     $counter++;
   }
-  
-  // Check if file already exists
-//  if (file_exists($target_dir.$target_name)) {
-//    $target_name = "new_".$target_name;
-    
-    //echo "Sorry, file already exists.";
-//  }
 
   $target_url = "http://" . $target_ip . "/" . $target_dir . $target_name;
 
