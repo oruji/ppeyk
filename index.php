@@ -189,8 +189,8 @@ if(isset($_POST['submit'])){ //check if form was submitted
   
   $counter = 1;
   while (file_exists($target_dir.$target_name)) {
-    //$target_name = "new" . $counter . $target_name;
-    $target_name = substr_replace($target_name, $counter, -4, 0);
+    //$target_name = substr_replace($target_name, $counter, -4, 0);
+    $target_name = $counter . $target_name;
     
     $counter++;
   }
