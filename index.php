@@ -19,6 +19,10 @@ div {
 }
 #mySend {width:18%;max-width:100px;height:30px}
 .myUser {font-weight:bold}
+
+.Server {
+  background: #e2f8ff;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -149,7 +153,7 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".gif")
         || hyperlink.toLowerCase().endsWith(".svg")) {
           
-        var mysrc = '<img style="max-width:300px;vertical-align: middle;" src="'+ hyperlink +'" />';
+        var mysrc = '<img style="max-width:96px;vertical-align: middle;" src="'+ hyperlink +'" />';
         
         return space + '<a target="_blank" href="' + hyperlink + '">' + mysrc + '</a>';
       }
@@ -246,7 +250,7 @@ if(isset($_POST['upload'])){ //check if form was submitted
   $target_dir = "file/";
   $target_name = basename($_FILES["fileToUpload"]["name"]);
   $target_name = str_replace(" ", "_", $target_name);
-  $target_ip = getHostByName(php_uname('n'));
+  $target_ip = $_SERVER['SERVER_ADDR'];
   
   $counter = 1;
   while (file_exists($target_dir.$target_name)) {

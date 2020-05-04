@@ -7,7 +7,11 @@
 
   $dayName = date("D");
 
-  $myUser = $_SERVER['REMOTE_ADDR'];
+  if ($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR'])
+    $myUser = "Server";
+  
+  else 
+    $myUser = $_SERVER['REMOTE_ADDR'];
 
   $myFinal = "<div class=\"$myUser\" title=\"$dayName - $myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>";
 
