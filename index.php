@@ -19,10 +19,6 @@ div {
 }
 #mySend {width:18%;max-width:100px;height:30px}
 .myUser {font-weight:bold}
-
-.Server {
-  background: #e2f8ff;
-}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,6 +31,7 @@ $(document).on("click", "#mySend", function() {
     $.ajax({
       type: 'POST',
       url: 'chat.php', 
+      async: false,
       data: { 
         'myText': toLink(myText),
         'myHistory': myHistory
@@ -266,13 +263,12 @@ if(isset($_POST['upload'])){ //check if form was submitted
       echo "The file <a target=_blank $target_url \">". $target_name . "</a> has been uploaded.";
       
       echo "
-      <script>
-      $(document).ready(function(){
-        loadSimple();
-        $(\"#myText\").val(\"$target_url\");
-        $(\"#mySend\").click();
-  });
-      </script>";
+        <script>
+          $(\"#myText\").val(\"$target_url\");
+          $(\"#mySend\").click();
+          window.location = 'home.php';
+        </script>
+      ";
 
   } else {
       echo "Sorry, there was an error uploading your file.";
