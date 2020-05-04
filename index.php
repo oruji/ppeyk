@@ -149,22 +149,36 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".gif")
         || hyperlink.toLowerCase().endsWith(".svg")) {
           
-        var mysrc = '<img style="max-width:96px;vertical-align: middle;" src="'+ hyperlink +'" />';
+        var mysrc = '<img style="max-width:300px;vertical-align: middle;" src="'+ hyperlink +'" />';
         
         return space + '<a target="_blank" href="' + hyperlink + '">' + mysrc + '</a>';
       }
 
-      // image support
+      // video support
       if (hyperlink.toLowerCase().endsWith(".mp4")
         || hyperlink.toLowerCase().endsWith(".mkv")
         || hyperlink.toLowerCase().endsWith(".avi")
         || hyperlink.toLowerCase().endsWith(".wmv")
         || hyperlink.toLowerCase().endsWith(".mov")) {
           
-        var mysrc = '<video style="max-width:197px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="video/mp4"></video>';
+        var mysrc = '<video style="max-width:300px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="video/mp4"></video>';
         
         return mysrc;
       }
+
+      // audio support
+      if (hyperlink.toLowerCase().endsWith(".m4a")
+        || hyperlink.toLowerCase().endsWith(".mp3")
+        || hyperlink.toLowerCase().endsWith(".wma")
+        || hyperlink.toLowerCase().endsWith(".wav")
+        || hyperlink.toLowerCase().endsWith(".wav")) {
+          
+        var mysrc = '<audio style="max-width:300px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="audio/mpeg"></audio>';
+        
+        return mysrc;
+      }
+      
+      
       
       return space + '<a target="_blank" href="' + hyperlink + '">' + url + '</a>';
     }
