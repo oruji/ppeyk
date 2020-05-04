@@ -10,13 +10,6 @@ div {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.Amin {
-  background: #ecfaff;
-}
-
-.Fatemeh {
-  background: #ffe6f0;
-}
 
 #myText {
   margin-bottom: 5px;
@@ -212,8 +205,6 @@ function playAudio() {
 <div id="myHistory"></div>
 <?php
 if(isset($_POST['upload'])){ //check if form was submitted
-  
-
   $target_dir = "file/";
   $target_name = basename($_FILES["fileToUpload"]["name"]);
   $target_name = str_replace(" ", "_", $target_name);
