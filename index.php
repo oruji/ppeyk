@@ -143,7 +143,7 @@ function toLink(text) {
         hyperlink = 'http://' + hyperlink;
       }
 
-      
+      // image support
       if (hyperlink.toLowerCase().endsWith(".png")
         || hyperlink.toLowerCase().endsWith(".jpg")
         || hyperlink.toLowerCase().endsWith(".gif")
@@ -152,6 +152,18 @@ function toLink(text) {
         var mysrc = '<img style="max-width:96px;vertical-align: middle;" src="'+ hyperlink +'" />';
         
         return space + '<a target="_blank" href="' + hyperlink + '">' + mysrc + '</a>';
+      }
+
+      // image support
+      if (hyperlink.toLowerCase().endsWith(".mp4")
+        || hyperlink.toLowerCase().endsWith(".mkv")
+        || hyperlink.toLowerCase().endsWith(".avi")
+        || hyperlink.toLowerCase().endsWith(".wmv")
+        || hyperlink.toLowerCase().endsWith(".mov")) {
+          
+        var mysrc = '<video style="max-width:197px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="video/mp4"></video>';
+        
+        return mysrc;
       }
       
       return space + '<a target="_blank" href="' + hyperlink + '">' + url + '</a>';
