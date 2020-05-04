@@ -7,7 +7,7 @@
 
   $dayName = date("D");
 
-  $myUser = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+  $myUser = $_SERVER['REMOTE_ADDR'];
 
   $myFinal = "<div class=\"$myUser\" title=\"$dayName - $myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>";
 

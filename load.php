@@ -1,8 +1,9 @@
 <?php
-	$myRead = fopen("history.txt", "r") or die("Unable to open Read file!");
+$rfile = "history.txt";
+	$myRead = fopen($rfile, "r") or die("Unable to open Read file!");
 
-  if (filesize("history.txt") !== 0) {
-    $html = fread($myRead, filesize("history.txt"));
+  if (filesize($rfile) !== 0) {
+    $html = fread($myRead, filesize($rfile));
     fclose($myRead);
 
     $html = str_replace("\r", "", $html);
@@ -13,6 +14,6 @@
     $myArr = array_reverse($myArr);
     $html = join("</div>",$myArr);
 
-    echo gethostbyaddr($_SERVER['REMOTE_ADDR']) . "~^" . $html;
+    echo $_SERVER['REMOTE_ADDR'] . "~^" . $html;
   }
 ?>

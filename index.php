@@ -53,8 +53,7 @@ $(document).on("click", "#mySend", function() {
 });
 
 $(document).ready(function(){
- 
-    $.ajax({
+  $.ajax({
     type: 'POST',
     url: 'load.php', 
     scriptCharset: "utf-8" ,
@@ -67,11 +66,11 @@ $(document).ready(function(){
   // press enter send message
   var input = document.getElementById("myText");
   input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("mySend").click();
-  }
-});
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("mySend").click();
+    }
+  });
 
 $('[id^="emo_"]').each(function() {
     $(this).click(function(){
