@@ -142,6 +142,18 @@ function toLink(text) {
       if (!hyperlink.match('^https?:\/\/')) {
         hyperlink = 'http://' + hyperlink;
       }
+
+      
+      if (hyperlink.toLowerCase().endsWith(".png")
+        || hyperlink.toLowerCase().endsWith(".jpg")
+        || hyperlink.toLowerCase().endsWith(".gif")
+        || hyperlink.toLowerCase().endsWith(".svg")) {
+          
+        var mysrc = '<img style="max-width:96px;vertical-align: middle;" src="'+ hyperlink +'" />';
+        
+        return space + '<a target="_blank" href="' + hyperlink + '">' + mysrc + '</a>';
+      }
+      
       return space + '<a target="_blank" href="' + hyperlink + '">' + url + '</a>';
     }
   );
