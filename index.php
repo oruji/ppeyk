@@ -267,7 +267,7 @@ if(isset($_POST['upload'])){ //check if form was submitted
         <script>
           $(\"#myText\").val(\"$target_url\");
           $(\"#mySend\").click();
-          window.location = 'home.php';
+          window.location = 'index.php';
         </script>
       ";
 
