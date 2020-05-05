@@ -172,7 +172,8 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".mp3")
         || hyperlink.toLowerCase().endsWith(".wma")
         || hyperlink.toLowerCase().endsWith(".wav")
-        || hyperlink.toLowerCase().endsWith(".wav")) {
+        || hyperlink.toLowerCase().endsWith(".wav")
+        || hyperlink.toLowerCase().endsWith(".ogg")) {
           
         var mysrc = '<audio style="max-width:300px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="audio/mpeg"></audio>';
         
