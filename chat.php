@@ -9,7 +9,7 @@
 
   $myUser = $_SERVER['REMOTE_ADDR'];
 
-  $myFinal = "<div class=\"$myUser\" title=\"$dayName - $myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>".$myText."</div>";
+  $myFinal = "<div class=\"$myUser\" title=\"$dayName - $myDate\"><span class=\"myUser\">" . $myUser . " (" . date("H:i") . "): </span>". $myText . "</div>\n";
 
   $fp = fopen('history.txt', 'a') or die("Unable to open Write file!");
   fwrite($fp, $myFinal);  
