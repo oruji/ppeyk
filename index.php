@@ -162,7 +162,7 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".wmv")
         || hyperlink.toLowerCase().endsWith(".mov")) {
           
-        var mysrc = '<video style="max-width: 300px;vertical-align: middle;max-height: 170px;width: 300px;" controls><source src="' + hyperlink + '" type="video/mp4"></video>';
+        var mysrc = '<video style="max-width: 300px;vertical-align: middle;max-height: 170px;width: 300px;" controls><source src="' + hyperlink + '" type="video/mp4"></video><a href="' + hyperlink + ".html" + '">link</a>';
         
         return mysrc;
       }
@@ -175,7 +175,7 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".wav")
         || hyperlink.toLowerCase().endsWith(".ogg")) {
           
-        var mysrc = '<audio style="max-width:300px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="audio/mpeg"></audio>';
+        var mysrc = '<audio style="max-width:300px;vertical-align: middle;" controls><source src="' + hyperlink + '" type="audio/mpeg"></audio><a href="' + hyperlink + ".html" + '">link</a>';
         
         return mysrc;
       }
@@ -237,7 +237,7 @@ function playAudio() {
 </div>
 
 <input type="text" id="myText" autofocus emoji />
-<button id="mySend">Send</button>
+<button id="mySend">Send</button><a href="http://192.168.1.52/file/">file</a>
 <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Send File" name="upload">
@@ -262,6 +262,12 @@ if(isset($_POST['upload'])){ //check if form was submitted
 
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir.$target_name)) {
       echo "The file <a target=_blank $target_url \">". $target_name . "</a> has been uploaded.";
+
+      // write file add html page for new tab
+      $myWrite = fopen($target_dir . $target_name . ".html", "w") or die("Unable to open Write file!");
+      $result = '<video style="max-width: 1100px;vertical-align: middle;" controls><source src="' . $target_url . '" type="video/mp4"></video>';
+      fwrite($myWrite, $result);
+      fclose($myWrite);
       
       echo "
         <script>
