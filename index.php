@@ -265,6 +265,8 @@ if(isset($_POST['upload'])){ //check if form was submitted
 
       // create html page for new tab
       $result = '<script src="/jquery.js"></script>';
+      $result = $result . '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
+      $result = $result . '<meta name="viewport" content="width=device-width, initial-scale=1" />';
       $myWrite = fopen($target_dir . $target_name . ".html", "w") or die("Unable to open Write file!");
       $result = $result . '<video id="myvid" style="vertical-align: middle;" controls><source src="' . $target_url . '" type="video/mp4"></video>';
       $result = $result . '<script>$("#myvid").css("width", screen.width-20);$("#myvid").css("height", screen.height-130);</script>';
