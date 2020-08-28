@@ -263,12 +263,14 @@ if(isset($_POST['upload'])){ //check if form was submitted
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir.$target_name)) {
       echo "The file <a target=_blank $target_url \">". $target_name . "</a> has been uploaded.";
 
-      // write file add html page for new tab
+      // create html page for new tab
+      $result = '<script src="/jquery.js"></script>';
       $myWrite = fopen($target_dir . $target_name . ".html", "w") or die("Unable to open Write file!");
-      $result = '<video style="max-width: 1100px;vertical-align: middle;" controls><source src="' . $target_url . '" type="video/mp4"></video>';
+      $result = $result . '<video id="myvid" style="vertical-align: middle;" controls><source src="' . $target_url . '" type="video/mp4"></video>';
+      $result = $result . '<script>$("#myvid").css("width", screen.width-20);$("#myvid").css("height", screen.height-130);</script>';
       fwrite($myWrite, $result);
       fclose($myWrite);
-      
+
       echo "
         <script>
           $(\"#myText\").val(\"$target_url\");
