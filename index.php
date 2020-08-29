@@ -162,7 +162,7 @@ function toLink(text) {
         || hyperlink.toLowerCase().endsWith(".wmv")
         || hyperlink.toLowerCase().endsWith(".mov")) {
           
-        var mysrc = '<video style="max-width: 300px;vertical-align: middle;max-height: 170px;width: 300px;" controls><source src="' + hyperlink + '" type="video/mp4"></video><a href="' + hyperlink + ".html" + '">link</a>';
+        var mysrc = '<a href="' + hyperlink + ".html" + '"><video style="max-width: 300px;vertical-align: middle;max-height: 170px;width: 300px;" controls><source src="' + hyperlink + '" type="video/mp4"></video></a>';
         
         return mysrc;
       }
